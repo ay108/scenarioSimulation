@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import joblib
 from statsmodels.tsa.statespace.sarimax import SARIMAXResults
 import numpy as np
+import os
 import pickle
 import openpyxl
 
@@ -17,6 +18,32 @@ try:
 except ImportError as e:
     st.write(f"openpyxl is not installed: {e}")
 
+
+# Path to your data file
+data_path = 'quarter_data.xls'
+
+# Check if the file exists
+if not os.path.isfile(data_path):
+    raise FileNotFoundError(f"No such file or directory: {data_path}")
+
+# Function to load data with debugging output
+@st.cache_data
+def load_data():
+    try:
+        df = pd.read_excel(data_path, index_col='date', parse_dates=True)
+        st.write("Excel file loaded successfully")
+        return df
+    except Exception as e:
+        st.write(f"Error loading Excel file: {e}")
+        return None
+
+# Load data
+data = load_data()
+
+if data is not None:
+    st.write(data)
+else:
+    st.write("Failed to load data")
 
 @st.cache_data
 def load_sarimax_model():
