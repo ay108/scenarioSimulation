@@ -25,7 +25,6 @@ if not os.path.isfile(data_path):
 def load_data():
     try:
         df = pd.read_excel(data_path, index_col='date', parse_dates=True)
-        st.write("Excel file loaded successfully")
         return df
     except Exception as e:
         st.write(f"Error loading Excel file: {e}")
