@@ -5,8 +5,18 @@ import joblib
 from statsmodels.tsa.statespace.sarimax import SARIMAXResults
 import numpy as np
 import pickle
+import openpyxl
+
 # Load SARIMA, SARIMAX, and LSTM models
 model_path = 'sarimax_model.pkl'
+
+# Debugging code to print installed packages
+try:
+    import openpyxl
+    st.write("openpyxl is installed")
+except ImportError as e:
+    st.write(f"openpyxl is not installed: {e}")
+
 
 @st.cache_data
 def load_sarimax_model():
