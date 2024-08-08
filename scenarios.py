@@ -20,7 +20,7 @@ except ImportError as e:
 
 
 # Path to your data file
-data_path = 'quarter_data.xlxs'
+data_path = 'quarter_data.xlsx'
 
 # Check if the file exists
 if not os.path.isfile(data_path):
