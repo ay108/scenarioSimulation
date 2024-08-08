@@ -9,24 +9,8 @@ import pickle
 import openpyxl
 import pkg_resources
 
-# List all installed packages and their versions
-installed_packages = {pkg.key: pkg.version for pkg in pkg_resources.working_set}
-st.write("Installed packages:")
-st.write(installed_packages)
-
-import openpyxl
-st.write(f"openpyxl version: {openpyxl.__version__}")
-
-
 # Load SARIMA, SARIMAX, and LSTM models
 model_path = 'sarimax_model.pkl'
-
-# Debugging code to print installed packages
-try:
-    import openpyxl
-    st.write("openpyxl is installed")
-except ImportError as e:
-    st.write(f"openpyxl is not installed: {e}")
 
 
 # Path to your data file
